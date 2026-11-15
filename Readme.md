@@ -130,7 +130,7 @@ Use at your own discretion.
 
 **Author:** infinite667
 
-**Project:** AMD Radeon Tweaks – Performance Configuration
+**Project:** AMD Radeon Tweaks – Performance 
 
 **GitHub:** [github.com/infinite667](https://github.com/infinite667)
 
