@@ -1,4 +1,4 @@
-# AMD Radeon Tweaks – Performance Configuration
+# AMD Radeon Tweaks – Performance
 
 A Windows batch script designed to apply or revert a collection of AMD Radeon driver and Windows registry settings.
 
@@ -11,7 +11,6 @@ The project focuses on experimenting with GPU power-management behavior, driver 
 ## Features
 
 - **Automatic AMD GPU Detection** – Searches Windows display-adapter registry entries for an AMD graphics adapter.
-- **Administrator Privilege Check** – Requests elevated permissions when required.
 - **Apply Configuration** – Writes the selected AMD and Windows registry values.
 - **Revert Configuration** – Removes the registry values managed by the script.
 - **Power Management Tweaks** – Modifies selected GPU power-management and low-power-state settings.
@@ -24,15 +23,6 @@ The project focuses on experimenting with GPU power-management behavior, driver 
 
 - Windows 10 or Windows 11.
 - An AMD graphics adapter with a compatible AMD driver.
-- Administrator privileges.
-- A basic understanding of Windows registry modifications.
-
-The script uses Windows built-in tools, including:
-
-- `reg.exe`
-- `fltmc.exe`
-- Windows PowerShell
-- `choice.exe`
 
 No additional third-party software is required.
 
@@ -100,58 +90,6 @@ Adds the `OverlayTestMode` registry value under:
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm`
 
 This is an experimental Windows display-composition override and may affect display behavior.
-
----
-
-## Important Warnings
-
-**Please read before using this script.**
-
-- Not every registry value is officially documented by AMD.
-- Some values may be ignored by newer or older driver versions.
-- Some settings may have different effects depending on the GPU architecture.
-- Disabling power-saving features can increase idle power consumption, heat, and battery usage.
-- Disabling clock or power gating does not guarantee higher FPS.
-- The MPO override can affect desktop and application display behavior.
-- Disabling AMD services may affect driver-related functionality.
-- The script does not guarantee improved gaming performance, reduced stuttering, or lower latency.
-
-The script intentionally does not apply the `PP_ThermalAutoThrottlingEnable=0` setting, as interfering with GPU thermal protection is not recommended.
-
-### Before Applying
-
-It is strongly recommended to:
-
-1. Create a Windows System Restore Point.
-2. Back up the relevant registry keys.
-3. Keep a copy of your original configuration.
-4. Understand what each setting changes before applying it.
-
-### Revert Limitations
-
-The Revert option removes the registry values managed by this script. It does not restore their original values if they existed before applying the configuration.
-
-Additionally, the script sets the selected AMD services to Automatic startup rather than restoring their previous startup types.
-
-Therefore, Revert should not be considered a complete system-state backup or guaranteed restoration mechanism.
-
----
-
-## Compatibility Notes
-
-The script searches for AMD display adapters through the Windows registry.
-
-On systems with multiple graphics adapters, it selects the first matching AMD adapter it finds.
-
-**Hybrid GPU systems:** If your laptop has both AMD integrated graphics and an NVIDIA dedicated GPU, the script targets the detected AMD adapter. It does not directly configure NVIDIA driver settings.
-
-Results may differ depending on:
-
-- AMD GPU architecture.
-- AMD driver version.
-- Windows version.
-- Laptop or desktop power-management implementation.
-- OEM-specific graphics configurations.
 
 ---
 
